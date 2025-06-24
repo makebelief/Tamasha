@@ -1,0 +1,485 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 20 14.3% 4.1%;
+    --card: 0 0% 100%;
+    --card-foreground: 20 14.3% 4.1%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 20 14.3% 4.1%;
+    --primary: 24.6 95% 53.1%;
+    --primary-foreground: 60 9.1% 97.8%;
+    --secondary: 60 4.8% 95.9%;
+    --secondary-foreground: 24 9.8% 10%;
+    --muted: 60 4.8% 95.9%;
+    --muted-foreground: 25 5.3% 44.7%;
+    --accent: 60 4.8% 95.9%;
+    --accent-foreground: 24 9.8% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 60 9.1% 97.8%;
+    --border: 20 5.9% 90%;
+    --input: 20 5.9% 90%;
+    --ring: 24.6 95% 53.1%;
+    --radius: 1rem;
+  }
+
+  .dark {
+    --background: 20 14.3% 4.1%;
+    --foreground: 60 9.1% 97.8%;
+    --card: 20 14.3% 4.1%;
+    --card-foreground: 60 9.1% 97.8%;
+    --popover: 20 14.3% 4.1%;
+    --popover-foreground: 60 9.1% 97.8%;
+    --primary: 20.5 90.2% 48.2%;
+    --primary-foreground: 60 9.1% 97.8%;
+    --secondary: 12 6.5% 15.1%;
+    --secondary-foreground: 60 9.1% 97.8%;
+    --muted: 12 6.5% 15.1%;
+    --muted-foreground: 24 5.4% 63.9%;
+    --accent: 12 6.5% 15.1%;
+    --accent-foreground: 60 9.1% 97.8%;
+    --destructive: 0 72.2% 50.6%;
+    --destructive-foreground: 60 9.1% 97.8%;
+    --border: 12 6.5% 15.1%;
+    --input: 12 6.5% 15.1%;
+    --ring: 20.5 90.2% 48.2%;
+  }
+}
+
+/* Kenya shape clip path */
+.clip-kenya {
+  clip-path: polygon(
+    50% 0%,    /* Northern point (Moyale) */
+    65% 10%,   /* Northeast curve (Mandera) */
+    75% 25%,   /* East bump (Wajir) */
+    85% 40%,   /* Coast start (near Lamu) */
+    82% 55%,   /* Coastal curve */
+    78% 65%,   /* Mombasa area */
+    70% 75%,   /* Southeast */
+    60% 85%,   /* South border */
+    45% 90%,   /* Southwest corner */
+    35% 85%,   /* Lake Victoria curve */
+    25% 75%,   /* Western bump */
+    20% 60%,   /* Western dip */
+    15% 45%,   /* Mt. Elgon area */
+    20% 35%,   /* Turkana region */
+    25% 25%,   /* Northwest curve */
+    35% 15%,   /* Northern border */
+    50% 0%     /* Back to top */
+  );
+}
+
+* {
+  border-color: hsl(var(--border));
+}
+
+body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-feature-settings: "rlig" 1, "calt" 1;
+}
+
+/* Modern Gradients */
+.gradient-orange {
+  background: linear-gradient(135deg, #FF6B35 0%, #FF8C42 100%);
+}
+
+.dark .gradient-orange {
+  background: linear-gradient(135deg, #ea580c 0%, #c2410c 100%);
+}
+
+.gradient-orange-dark {
+  background: linear-gradient(135deg, #ea580c 0%, #c2410c 100%);
+}
+
+.dark .gradient-orange-dark {
+  background: linear-gradient(135deg, #c2410c 0%, #991b1b 100%);
+}
+
+.gradient-text-orange {
+  background: linear-gradient(135deg, #FF6B35 0%, #FF8C42 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Modern Glass Effects */
+.glass-effect {
+  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+}
+
+.dark .glass-effect {
+  background: rgba(0, 0, 0, 0.25);
+  border-color: rgba(255, 255, 255, 0.05);
+}
+
+.glass-effect-dark {
+  backdrop-filter: blur(12px);
+  background: rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+}
+
+.dark .glass-effect-dark {
+  background: rgba(0, 0, 0, 0.35);
+  border-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Modern Hover Effects */
+.hover-lift {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 12px 24px -10px rgba(0, 0, 0, 0.15);
+}
+
+/* Modern Carousel Styles */
+.carousel-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.carousel-track {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.carousel-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.carousel-slide.active {
+  opacity: 1;
+}
+
+.carousel-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3.5rem;
+  height: 3.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background: rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  z-index: 20;
+}
+
+.carousel-nav:hover {
+  background: rgba(0, 0, 0, 0.25);
+  transform: translateY(-50%) scale(1.05);
+}
+
+.carousel-nav.prev {
+  left: 1.5rem;
+}
+
+.carousel-nav.next {
+  right: 1.5rem;
+}
+
+.carousel-indicators {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.75rem;
+  z-index: 20;
+}
+
+.carousel-indicator {
+  width: 2.5rem;
+  height: 0.25rem;
+  border-radius: 0.125rem;
+  background: rgba(255, 255, 255, 0.25);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.carousel-indicator:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.carousel-indicator.active {
+  background: #FF6B35;
+  width: 3rem;
+}
+
+/* Modern Grid Layout */
+.grid-responsive {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+@media (max-width: 640px) {
+  .grid-responsive {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+/* Modern Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(156, 163, 175, 0.5);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(156, 163, 175, 0.7);
+}
+
+/* Modern Card Styles */
+.card-modern {
+  @apply relative overflow-hidden rounded-2xl bg-white dark:bg-gray-800 shadow-lg transition-all duration-300;
+}
+
+.card-modern:hover {
+  @apply shadow-xl transform -translate-y-1;
+}
+
+.card-modern-image {
+  @apply relative overflow-hidden aspect-[2/3];
+}
+
+.card-modern-image img {
+  @apply object-cover w-full h-full transition-transform duration-300;
+}
+
+.card-modern:hover .card-modern-image img {
+  @apply scale-105;
+}
+
+.card-modern-content {
+  @apply p-4 space-y-2;
+}
+
+/* Modern Button Styles */
+.btn-modern {
+  @apply px-6 py-3 rounded-xl font-medium transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed;
+}
+
+.btn-modern-primary {
+  @apply btn-modern bg-gradient-to-r from-orange-500 to-red-500 text-white hover:shadow-lg hover:shadow-orange-500/25;
+}
+
+.btn-modern-secondary {
+  @apply btn-modern border-2 border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white;
+}
+
+/* Modern Loading Animation */
+.loading-modern {
+  @apply relative w-12 h-12;
+}
+
+.loading-modern::after {
+  content: '';
+  @apply absolute inset-0 rounded-full border-4 border-orange-500/20 border-t-orange-500 animate-spin;
+}
+
+/* Modern Input Styles */
+.input-modern {
+  @apply w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all duration-300;
+}
+
+/* African Pattern Background */
+.african-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+@layer utilities {
+  /* Simple Orange Gradients */
+  .gradient-orange {
+    @apply bg-gradient-to-r from-orange-500 to-red-500;
+  }
+
+  .gradient-orange-subtle {
+    background: linear-gradient(135deg, #ff6b35 0%, #ff8c42 100%);
+  }
+
+  .gradient-text-orange {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-red-500;
+  }
+
+  /* Simple Glass Effects */
+  .glass-dark {
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 107, 53, 0.2);
+  }
+
+  .glass-light {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 107, 53, 0.2);
+  }
+
+  /* Grid Responsive */
+  .grid-responsive {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+  }
+
+  @media (max-width: 640px) {
+    .grid-responsive {
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 1rem;
+    }
+  }
+
+  /* Simple Shadows */
+  .shadow-soft {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .shadow-orange-soft {
+    box-shadow: 0 4px 12px rgba(255, 107, 53, 0.2);
+  }
+}
+
+@layer components {
+  /* Simple Hover Effects */
+  .hover-scale {
+    transition: transform 0.2s ease;
+  }
+
+  .hover-scale:hover {
+    transform: scale(1.02);
+  }
+
+  /* Button Styles */
+  .btn-orange {
+    background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+    color: white;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    transition: all 0.2s ease;
+    border: none;
+  }
+
+  .btn-orange:hover {
+    background: linear-gradient(135deg, #e85d04 0%, #dc2f02 100%);
+    transform: translateY(-1px);
+  }
+
+  .btn-outline-orange {
+    border: 2px solid #ff6b35;
+    color: #ff6b35;
+    background: transparent;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    transition: all 0.2s ease;
+  }
+
+  .btn-outline-orange:hover {
+    background: #ff6b35;
+    color: white;
+  }
+
+  .btn-black {
+    background: #000000;
+    color: #ff6b35;
+    border: 2px solid #ff6b35;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    transition: all 0.2s ease;
+  }
+
+  .btn-black:hover {
+    background: #ff6b35;
+    color: white;
+  }
+
+  /* Card Styles */
+  .card-simple {
+    background: #000000;
+    border: 1px solid rgba(255, 107, 53, 0.2);
+    border-radius: 0.75rem;
+    transition: all 0.2s ease;
+    overflow: hidden;
+  }
+
+  .card-simple:hover {
+    border-color: rgba(255, 107, 53, 0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  }
+
+  .card-glass {
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 107, 53, 0.2);
+    border-radius: 0.75rem;
+    transition: all 0.2s ease;
+  }
+
+  .card-glass:hover {
+    border-color: rgba(255, 107, 53, 0.4);
+  }
+
+  /* Loading Animation */
+  .loading-simple {
+    width: 32px;
+    height: 32px;
+    border: 3px solid rgba(255, 107, 53, 0.3);
+    border-radius: 50%;
+    border-top-color: #ff6b35;
+    animation: spin 1s linear infinite;
+  }
+}
+
+/* Simple Keyframe Animations */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Clean Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ff6b35;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #e85d04;
+}
