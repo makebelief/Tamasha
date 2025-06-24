@@ -2,6 +2,8 @@
 
 Tamasha is a modern web application for discovering and exploring African movies and TV shows. It provides a rich user interface for browsing, searching, and managing your watchlist of African content.
 
+![Tamasha Home Page](Screenshot%20from%202025-06-24%2011-24-33.png)
+
 ## Table of Contents
 
 - [Features](#features)
@@ -100,6 +102,10 @@ Tamasha is a modern web application for discovering and exploring African movies
    # Backend only
    make run-backend
    ```
+
+After successful setup, you should see the application running with the search functionality:
+
+![Tamasha Search Feature](Screenshot%20from%202025-06-24%2011-32-27.png)
 
 ## API Documentation
 
