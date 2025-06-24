@@ -27,13 +27,21 @@ install-backend:
 
 # Run the application
 run: run-backend run-frontend
+	@echo "🌟 Starting up your development environment! Please be patient..."
+	@echo "🔄 The servers are warming up - this might take a minute..."
+	@echo "🎯 Backend will be available at http://localhost:8080"
+	@echo "🎨 Frontend will be available at http://localhost:3000"
+	@echo "⏳ Waiting for servers to be ready..."
+	@echo "💡 TIP: First startup takes longer due to dependency installation and compilation"
+	@sleep 3
+	@echo "🚀 Almost there! Your ports will be available shortly..."
 
 run-frontend: install-frontend
-	@echo "Starting frontend server..."
+	@echo "🛠️  Starting frontend server..."
 	cd $(FRONTEND_DIR) && npm run dev &
 
 run-backend:
-	@echo "Starting backend server..."
+	@echo "⚙️  Starting backend server..."
 	cd $(BACKEND_DIR) && GOPATH=$(GOPATH) go run -mod=mod cmd/api/main.go &
 
 # Clean up
