@@ -16,7 +16,7 @@ const (
 
 type Client struct {
 	httpClient *http.Client
-	apiKey     string
+	token      string
 	cache      *Cache
 }
 
@@ -30,12 +30,12 @@ type CacheItem struct {
 	Timestamp time.Time
 }
 
-func NewClient(apiKey string) *Client {
+func NewClient(token string) *Client {
 	return &Client{
 		httpClient: &http.Client{
 			Timeout: 10 * time.Second,
 		},
-		apiKey: apiKey,
+		token: token,
 		cache: &Cache{
 			items: make(map[string]*CacheItem),
 		},
@@ -78,7 +78,7 @@ func (c *Client) get(endpoint string, params url.Values, v interface{}) error {
 
 	// Add headers
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("Authorization", fmt.Sprintf("Bearer %s", c.apiKey))
+	req.Header.Set("Authorization", fmt.Sprintf("Bearer %s", c.token))
 
 	// Make request
 	resp, err := c.httpClient.Do(req)

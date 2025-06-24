@@ -3,7 +3,6 @@ package main
 import (
 	"log"
 	"net/http"
-	"os"
 
 	"afroflix/internal/handlers"
 	"afroflix/pkg/tmdb"
@@ -13,14 +12,11 @@ import (
 )
 
 func main() {
-	// Get TMDB API key from environment variable
-	apiKey := os.Getenv("TMDB_API_KEY")
-	if apiKey == "" {
-		log.Fatal("TMDB_API_KEY environment variable is required")
-	}
+	// Use hardcoded TMDB API token
+	apiToken := "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1ZTFkN2RlOWZkYjUzODhjNTE2NThlNDg3MTQ2ZDc2ZiIsIm5iZiI6MTc1MDY5MTg1OC43MDIwMDAxLCJzdWIiOiI2ODU5NzAxMjRmMWZlOGMwODI2YmE2ZDciLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.cKSOUSzQ-ykD6_1OOcYzfJEPFRHbTsafMcCJZ6EHtD0"
 
 	// Create TMDB client
-	tmdbClient := tmdb.NewClient(apiKey)
+	tmdbClient := tmdb.NewClient(apiToken)
 
 	// Create handlers
 	h := handlers.NewHandler(tmdbClient)
