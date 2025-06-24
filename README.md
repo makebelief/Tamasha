@@ -75,37 +75,23 @@ Tamasha is a modern web application for discovering and exploring African movies
 
 1. **Clone the Repository**
    ```bash
-   git clone https://github.com/yourusername/tamasha.git
-   cd tamasha
+   git clone https://github.com/makebelief/Tamasha.git
+   cd Tamasha
    ```
 
-2. **Environment Setup**
-   
-   Create a `.env.local` file in the root directory:
-   ```env
-   NEXT_PUBLIC_TMDB_API_KEY=your_tmdb_api_key
-   NEXT_PUBLIC_API_BASE_URL=http://localhost:8080
-   NEXT_PUBLIC_METADATA_BASE=http://localhost:3000
-   ```
-
-3. **Quick Start**
+2. **Quick Start**
    ```bash
-   # Install dependencies and start development servers
-   make dev
-   ```
-
-   Or run services individually:
-   ```bash
-   # Frontend only
-   make run-frontend
-
-   # Backend only
-   make run-backend
+   # Run services
+   make run
    ```
 
 After successful setup, you should see the application running with the search functionality:
 
 ![Tamasha Search Feature](Screenshot%20from%202025-06-24%2011-32-27.png)
+
+Click on the provided port to access the site:
+
+![Available Port](Screenshot%20from%202025-06-24%2011-53-31.png)
 
 ## API Documentation
 
@@ -204,17 +190,6 @@ Get streaming availability for a movie or TV show.
 └── README.md          # Documentation
 ```
 
-## Development
-
-### Running Tests
-```bash
-# Frontend tests
-npm test
-
-# Backend tests
-cd backend && go test ./...
-```
-
 ### Adding New Features
 
 1. Create a new branch
@@ -222,33 +197,6 @@ cd backend && go test ./...
 3. Add tests
 4. Update documentation
 5. Submit a pull request
-
-## Deployment
-
-### Frontend Deployment
-
-1. Build the frontend:
-   ```bash
-   npm run build
-   ```
-
-2. Start the production server:
-   ```bash
-   npm start
-   ```
-
-### Backend Deployment
-
-1. Build the backend:
-   ```bash
-   cd backend
-   go build -o server cmd/api/main.go
-   ```
-
-2. Run the server:
-   ```bash
-   ./server
-   ```
 
 ## Contributing
 
@@ -265,4 +213,4 @@ Special thanks to:
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details. 
