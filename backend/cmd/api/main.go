@@ -3,6 +3,7 @@ package main
 import (
 	"log"
 	"net/http"
+	"os"
 
 	"afroflix/internal/handlers"
 	"afroflix/pkg/tmdb"

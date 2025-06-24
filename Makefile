@@ -28,7 +28,7 @@ install-backend:
 # Run the application
 run: run-backend run-frontend
 
-run-frontend:
+run-frontend: install-frontend
 	@echo "Starting frontend server..."
 	cd $(FRONTEND_DIR) && npm run dev &
 
