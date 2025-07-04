@@ -17,6 +17,7 @@ export default function AfroNavigation() {
   const [mounted, setMounted] = useState(false)
   const { watchlist } = useApp()
   const { theme, setTheme } = useTheme()
+  const basePath = process.env.NODE_ENV === 'production' ? '/Tamasha' : ''
 
   useEffect(() => {
     setMounted(true)
@@ -51,7 +52,7 @@ export default function AfroNavigation() {
           >
             <div className="relative w-16 h-16 flex items-center justify-center">
               <Image
-                src="/tamasha-logo.png"
+                src={`${basePath}/tamasha-logo.png`}
                 alt="Tamasha Logo"
                 width={64}
                 height={64}

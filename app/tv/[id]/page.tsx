@@ -1,5 +1,6 @@
 import AfroNavigation from "@/components/AfroNavigation"
-import SeriesDetailsView from "@/components/SeriesDetailsView"
+import TVDetailsView from "@/components/TVDetailsView"
+import { getTrendingTV } from "@/lib/tmdb"
 
 interface TVPageProps {
   params: {
@@ -7,15 +8,25 @@ interface TVPageProps {
   }
 }
 
-// This is a temporary solution for static export
+// Pre-render pages for trending TV shows
 export async function generateStaticParams() {
-  // For static export, we'll pre-render a few popular TV show IDs
-  // You should replace these with actual TV show IDs from your data
+  try {
+    const data = await getTrendingTV()
+    if (data.results && data.results.length > 0) {
+      // Get IDs from the first 20 trending TV shows
+      return data.results.slice(0, 20).map((show: any) => ({
+        id: show.id.toString()
+      }))
+    }
+  } catch (error) {
+    console.error("Error fetching TV show IDs for static generation:", error)
+  }
+  
+  // Fallback to a few static IDs if the API call fails
   return [
     { id: '1' },
     { id: '2' },
     { id: '3' },
-    // Add more IDs as needed
   ]
 }
 
@@ -26,7 +37,7 @@ export default function TVPage({ params }: TVPageProps) {
     <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-red-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
       <AfroNavigation />
       <main>
-        <SeriesDetailsView id={id} />
+        <TVDetailsView id={id} />
       </main>
     </div>
   )
