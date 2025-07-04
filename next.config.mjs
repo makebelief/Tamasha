@@ -14,6 +14,7 @@ const nextConfig = {
   devIndicators: {
     position: "bottom-right",
   },
+  trailingSlash: true,
 }
 
 export default nextConfig
